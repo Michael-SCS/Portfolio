@@ -1,58 +1,33 @@
 
-# Michael Castillo — Portafolio
+# 👋 Michael Castillo — Portafolio
 
-Portafolio personal de una sola página para Michael Steven Castillo Saldarriaga, desarrollador Frontend y fundador de **Bekuro**.
+Desarrollador Frontend | Ingeniero de Software en formación | Fundador de **Bekuro**
 
-🔗 Sitio: agrega aquí la URL una vez publicado.
+🔗 **[Ver sitio en vivo](https://michael-scs.github.io/Portfolio/)** · 📄 [Descargar currículum](./Hoja-de-vida-Michael-Castillo.pdf)
 
-## Contenido
+---
 
-- `index.html` — sitio completo (HTML + CSS + JS en un solo archivo, sin dependencias de build).
-- `Hoja-de-vida-Michael-Castillo.pdf` — currículum descargable, enlazado desde el botón "Descargar currículum".
+## Sobre este proyecto
 
-> Importante: ambos archivos deben estar en la **misma carpeta**. El botón de descarga apunta a `./Hoja-de-vida-Michael-Castillo.pdf` de forma relativa.
+Portafolio personal construido desde cero con HTML, CSS y JavaScript puro — sin frameworks, sin build step. Presenta mi trabajo como desarrollador Frontend: los productos que construyo bajo mi marca **Bekuro** y mi experiencia profesional.
 
-## Secciones
+## ✨ Lo que incluye
 
-- **Hero** — presentación y accesos rápidos (Ver proyectos / Contactar / Descargar currículum).
-- **Proyectos** — apps de Bekuro (Fluu, Kuento, Gymbo) y trabajo freelance (sitio web Óptica).
-- **Experiencia** — Almaexperiencia Latam y Fundación CINDE.
-- **Habilidades** — stack de frontend, backend, datos y herramientas.
-- **Educación** — Politécnico Grancolombiano y SENA.
-- **Contacto** — correo y teléfono.
+- **Proyectos propios** — Fluu (publicada en Google Play), Kuento (finanzas personales, en desarrollo) y Gymbo (app fitness, en concepto).
+- **Proyecto freelance** — sitio web para una óptica real, responsive y con formulario funcional.
+- **Experiencia profesional** — Almaexperiencia Latam y Fundación CINDE.
+- **Stack técnico, formación académica y contacto directo.**
 
-## Stack
+## 🎨 Diseño
 
-Solo HTML, CSS y JavaScript vanilla. Tipografías desde Google Fonts (Space Grotesk, JetBrains Mono, Inter). No requiere `npm install` ni build step.
+Tema oscuro minimalista construido sobre la identidad visual de Bekuro (`#22c55e` sobre fondo `#0a0e17`), con tipografía Space Grotesk + JetBrains Mono + Inter. Totalmente responsive y con animaciones sutiles al hacer scroll.
 
-## Cómo actualizar el contenido
+## 🛠️ Tecnologías
 
-Todo el texto está directamente en `index.html`, organizado por secciones con comentarios de estructura clara (`<section id="...">`). Para actualizar:
+`HTML5` · `CSS3` · `JavaScript` — sin dependencias ni frameworks.
 
-- **Proyectos**: busca `id="proyectos"` y edita las tarjetas `.card`.
-- **Experiencia**: busca `id="experiencia"` y edita `.tl-item`.
-- **Habilidades**: busca `id="habilidades"` y edita `.skill-col`.
-- **Currículum**: reemplaza `Hoja-de-vida-Michael-Castillo.pdf` por la versión actualizada, manteniendo el mismo nombre de archivo (o actualiza el `href` del botón si cambias el nombre).
+## 📬 Contacto
 
-## Cómo publicarlo (elige una opción)
-
-### Opción 1 — GitHub Pages (gratis)
-
-1. Crea un repositorio en GitHub y sube `index.html` y el PDF.
-2. Ve a **Settings → Pages**, selecciona la rama `main` y carpeta raíz.
-3. GitHub te da una URL tipo `https://tuusuario.github.io/repo`.
-
-### Opción 2 — Netlify / Vercel (gratis, más rápido)
-
-1. Arrastra la carpeta con ambos archivos a [app.netlify.com/drop](https://app.netlify.com/drop) (o conecta el repo en Vercel).
-2. Listo, te da una URL al instante. Puedes conectar un dominio propio después.
-
-### Opción 3 — Subdominio de bekuro.com
-
-Sube ambos archivos a una carpeta como `michael.bekuro.com` o `bekuro.com/cv` en tu hosting actual, vía FTP o el panel de tu proveedor.
-
-## Notas
-
-- El sitio respeta `prefers-reduced-motion` para quienes desactivan animaciones.
-- Es responsive: probado en desktop (1280px) y mobile (390px).
-- Colores y tipografía reutilizan la identidad de marca de Bekuro (`#22c55e` sobre fondo oscuro `#0a0e17`).
+- ✉️ [Michaelsteven3211@gmail.com](mailto:Michaelsteven3211@gmail.com)
+- 📱 (+57) 319 641 2175
+- 📍 Medellín, Colombia
