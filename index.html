@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Michael Castillo — Desarrollador Frontend</title>
+<meta name="description" content="Portafolio de Michael Steven Castillo Saldarriaga, desarrollador Frontend y fundador de Bekuro." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0a0e17;
+    --surface: #10151f;
+    --surface-2: #151b28;
+    --border: #22293a;
+    --text: #e7e9ee;
+    --muted: #8b93a3;
+    --accent: #22c55e;
+    --accent-dim: #1a9c4a;
+    --accent-soft: rgba(34,197,94,0.12);
+    --radius: 10px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', system-ui, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px;}
+
+  /* subtle grid texture in background */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 80%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  header{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter: blur(10px);
+    background: rgba(10,14,23,0.75);
+    border-bottom:1px solid var(--border);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; max-width:1040px; margin:0 auto;
+  }
+  .logo{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700; font-size:19px; letter-spacing:0.5px;
+    display:flex; align-items:center; gap:9px; text-decoration:none;
+  }
+  .logo .mark{
+    width:30px; height:30px; border-radius:7px;
+    background:var(--accent-soft); border:1px solid var(--accent-dim);
+    color:var(--accent); display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace; font-size:13px; font-weight:600;
+  }
+  .navlinks{display:flex; gap:28px; font-size:14px;}
+  .navlinks a{text-decoration:none; color:var(--muted); transition:color .2s;}
+  .navlinks a:hover, .navlinks a:focus-visible{color:var(--text);}
+  .navlinks{display:flex;}
+  @media (max-width:640px){ .navlinks{display:none;} }
+
+  section{position:relative; z-index:1; padding:88px 0;}
+  section.tight{padding:56px 0;}
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--accent); font-size:13px; letter-spacing:1.5px;
+    text-transform:uppercase; margin:0 0 16px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"//"; opacity:.6;}
+
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700; font-size:clamp(34px, 6vw, 58px);
+    line-height:1.08; margin:0 0 22px; letter-spacing:-1px;
+  }
+  h1 span{color:var(--accent);}
+  h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600; font-size:28px; margin:0 0 8px; letter-spacing:-0.3px;
+  }
+  .lede{color:var(--muted); font-size:18px; max-width:560px; margin:0 0 34px;}
+
+  /* HERO */
+  .hero{padding-top:64px;}
+  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:center;}
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
+
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 20px; border-radius:8px; font-size:14.5px; font-weight:600;
+    text-decoration:none; transition:transform .15s ease, background .2s ease;
+    border:1px solid transparent;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--accent); color:#0a0e17;}
+  .btn-primary:hover{background:#3ddc74;}
+  .btn-ghost{background:transparent; border-color:var(--border); color:var(--text);}
+  .btn-ghost:hover{border-color:var(--accent-dim); color:var(--accent);}
+
+  /* code window signature */
+  .code-window{
+    background:var(--surface); border:1px solid var(--border); border-radius:12px;
+    overflow:hidden; box-shadow: 0 20px 50px -20px rgba(0,0,0,0.6);
+  }
+  .code-titlebar{
+    display:flex; align-items:center; gap:8px;
+    padding:11px 14px; background:var(--surface-2); border-bottom:1px solid var(--border);
+  }
+  .dot{width:10px; height:10px; border-radius:50%;}
+  .dot.r{background:#ff5f57;} .dot.y{background:#febc2e;} .dot.g{background:#28c840;}
+  .code-filename{margin-left:8px; font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--muted);}
+  .code-body{padding:20px 22px; font-family:'JetBrains Mono', monospace; font-size:13.5px; line-height:1.85; overflow-x:auto;}
+  .code-body .k{color:#c586c0;} .code-body .s{color:#ce9178;} .code-body .p{color:#8b93a3;}
+  .code-body .fn{color:#4ec9b0;} .code-body .n{color:var(--accent);} .code-body .c{color:#6a7385;}
+
+  /* SECTION HEADER */
+  .section-head{margin-bottom:40px;}
+
+  /* PROJECTS */
+  .project-group-label{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--muted);
+    text-transform:uppercase; letter-spacing:1px; margin:38px 0 16px;
+  }
+  .project-group-label:first-of-type{margin-top:0;}
+  .cards{display:grid; grid-template-columns:repeat(2, 1fr); gap:18px;}
+  @media (max-width:720px){ .cards{grid-template-columns:1fr;} }
+
+  .card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:24px; display:flex; flex-direction:column; gap:12px;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .card:hover{border-color:var(--accent-dim); transform:translateY(-2px);}
+  .card-top{display:flex; align-items:flex-start; justify-content:space-between; gap:10px;}
+  .card h3{font-family:'Space Grotesk', sans-serif; font-size:19px; margin:0; font-weight:600;}
+  .badge{
+    font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:.5px;
+    padding:3px 9px; border-radius:100px; white-space:nowrap; text-transform:uppercase;
+  }
+  .badge.live{background:var(--accent-soft); color:var(--accent); border:1px solid var(--accent-dim);}
+  .badge.dev{background:rgba(139,147,163,0.12); color:var(--muted); border:1px solid var(--border);}
+  .badge.concept{background:rgba(139,147,163,0.08); color:var(--muted); border:1px dashed var(--border);}
+  .card p{color:var(--muted); font-size:14.5px; margin:0; flex-grow:1;}
+  .tags{display:flex; flex-wrap:wrap; gap:7px; margin-top:2px;}
+  .tag{
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted);
+    background:var(--surface-2); border:1px solid var(--border); padding:4px 9px; border-radius:6px;
+  }
+  .card-link{
+    font-size:13.5px; font-weight:600; color:var(--accent); text-decoration:none;
+    display:inline-flex; align-items:center; gap:6px; margin-top:4px;
+  }
+  .card-link:hover{text-decoration:underline;}
+
+  /* EXPERIENCE */
+  .timeline{display:flex; flex-direction:column;}
+  .tl-item{
+    display:grid; grid-template-columns:150px 1fr; gap:24px;
+    padding:26px 0; border-top:1px solid var(--border);
+  }
+  .tl-item:last-child{border-bottom:1px solid var(--border);}
+  @media (max-width:640px){ .tl-item{grid-template-columns:1fr; gap:6px;} }
+  .tl-date{font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--muted); padding-top:2px;}
+  .tl-role{font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:17px; margin:0 0 3px;}
+  .tl-org{color:var(--accent); font-size:14px; margin:0 0 12px; font-weight:500;}
+  .tl-item ul{margin:0; padding-left:18px; color:var(--muted); font-size:14.5px;}
+  .tl-item li{margin-bottom:6px;}
+
+  /* SKILLS */
+  .skill-cols{display:grid; grid-template-columns:repeat(4, 1fr); gap:24px;}
+  @media (max-width:720px){ .skill-cols{grid-template-columns:repeat(2,1fr);} }
+  .skill-col h4{
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--muted);
+    text-transform:uppercase; letter-spacing:1px; margin:0 0 12px; font-weight:500;
+  }
+  .skill-col ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;}
+  .skill-col li{font-size:14.5px; display:flex; align-items:center; gap:8px;}
+  .skill-col li::before{content:""; width:5px; height:5px; border-radius:50%; background:var(--accent-dim); flex-shrink:0;}
+
+  /* EDUCATION */
+  .edu-item{padding:18px 0; border-top:1px solid var(--border);}
+  .edu-item:last-child{border-bottom:1px solid var(--border);}
+  .edu-item .row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;}
+  .edu-item h4{font-family:'Space Grotesk', sans-serif; font-size:16px; margin:0; font-weight:600;}
+  .edu-item .org{color:var(--muted); font-size:14px;}
+  .edu-item .date{font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--muted);}
+
+  /* CONTACT / FOOTER */
+  .contact-box{
+    background:var(--surface); border:1px solid var(--border); border-radius:14px;
+    padding:48px; text-align:center;
+  }
+  .contact-links{display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:26px;}
+  footer{padding:32px 0 60px; text-align:center; color:var(--muted); font-size:13px;}
+  footer .logo{justify-content:center; margin-bottom:10px;}
+
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1; transform:none; transition:none;}
+    .card:hover, .btn:hover{transform:none;}
+  }
+
+  :focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#top" class="logo"><span class="mark">MC</span>Michael Castillo</a>
+    <div class="navlinks">
+      <a href="#proyectos">Proyectos</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Desarrollador Frontend · Medellín, Colombia</p>
+        <h1>Construyo interfaces que <span>funcionan de verdad</span>, no solo maquetas.</h1>
+        <p class="lede">Ingeniero de software en formación con experiencia práctica en HTML, CSS, JavaScript y React. Fundador de <strong>Bekuro</strong>, un estudio indie donde diseño y desarrollo apps móviles de principio a fin.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
+          <a class="btn btn-ghost" href="#contacto">Contactar</a>
+          <a class="btn btn-ghost" href="./Hoja-de-vida-Michael-Castillo.pdf" download>Descargar currículum</a>
+        </div>
+      </div>
+      <div class="code-window reveal" id="codewin">
+        <div class="code-titlebar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="code-filename">developer.js</span>
+        </div>
+        <div class="code-body"><span class="k">const</span> <span class="n">developer</span> <span class="p">=</span> {<br>
+&nbsp;&nbsp;<span class="fn">name</span><span class="p">:</span> <span class="s">'Michael Castillo'</span><span class="p">,</span><br>
+&nbsp;&nbsp;<span class="fn">role</span><span class="p">:</span> <span class="s">'Frontend Developer'</span><span class="p">,</span><br>
+&nbsp;&nbsp;<span class="fn">stack</span><span class="p">:</span> [<span class="s">'React'</span><span class="p">,</span> <span class="s">'JS'</span><span class="p">,</span> <span class="s">'Tailwind'</span>]<span class="p">,</span><br>
+&nbsp;&nbsp;<span class="fn">building</span><span class="p">:</span> <span class="s">'Bekuro'</span><span class="p">,</span><br>
+&nbsp;&nbsp;<span class="fn">basedIn</span><span class="p">:</span> <span class="s">'Medellín, CO'</span><span class="p">,</span><br>
+&nbsp;&nbsp;<span class="fn">openTo</span><span class="p">:</span> <span class="s">'nuevas oportunidades'</span><span class="p">,</span><br>
+};<br><br></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proyectos" class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Proyectos</p>
+      <h2>Lo que he construido</h2>
+      <p class="lede">Un mix de apps propias bajo mi marca Bekuro y trabajo freelance para clientes reales.</p>
+    </div>
+
+    <p class="project-group-label reveal">Bekuro — apps propias</p>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="card-top"><h3>Fluu</h3><span class="badge live">Publicada</span></div>
+        <p>App de seguimiento de hábitos con rutinas por categorías, progreso de ahorro y recordatorios. Construida y publicada en solitario.</p>
+        <div class="tags"><span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">Supabase</span></div>
+        <a class="card-link" href="https://play.google.com/store/apps/details?id=com.bekuro.flowday" target="_blank" rel="noopener">Ver en Google Play →</a>
+      </div>
+      <div class="card reveal">
+        <div class="card-top"><h3>Kuento</h3><span class="badge dev">En desarrollo</span></div>
+        <p>App de finanzas personales: registro de ingresos y gastos, categorías y ahorro acumulado. En construcción activa, próxima al MVP.</p>
+        <div class="tags"><span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">Supabase</span></div>
+      </div>
+      <div class="card reveal">
+        <div class="card-top"><h3>Gymbo</h3><span class="badge concept">En concepto</span></div>
+        <p>Tercera app de la familia Bekuro: entrenamiento personalizado, ejercicios guiados y, más adelante, nutrición. En etapa de diseño inicial.</p>
+        <div class="tags"><span class="tag">React Native</span><span class="tag">Expo</span></div>
+      </div>
+    </div>
+
+    <p class="project-group-label reveal">Freelance</p>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="card-top"><h3>Sitio web — Óptica</h3><span class="badge live">Publicado</span></div>
+        <p>Sitio web responsive para una óptica real, con formulario de contacto funcional y optimización para móvil y escritorio.</p>
+        <div class="tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span></div>
+        <a class="card-link" href="http://www.sigadill.com" target="_blank" rel="noopener">Visitar sitio →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="experiencia" class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Experiencia</p>
+      <h2>Trayectoria</h2>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-date">01/2026 — Presente</div>
+        <div>
+          <p class="tl-role">Agente de Atención al Cliente</p>
+          <p class="tl-org">Almaexperiencia Latam</p>
+          <ul>
+            <li>Resuelvo incidencias y solicitudes de usuarios siguiendo protocolos de atención definidos.</li>
+            <li>Gestiono y doy seguimiento a casos mediante CRM/sistema de tickets, documentando cada interacción.</li>
+            <li>Desarrollo comunicación efectiva y atención al detalle aplicables a soporte técnico y producto.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">12/2019 — 08/2020</div>
+        <div>
+          <p class="tl-role">Soporte Técnico</p>
+          <p class="tl-org">Fundación CINDE</p>
+          <ul>
+            <li>Brindé soporte técnico integral, resolviendo problemas de hardware y software vía mesa de ayuda.</li>
+            <li>Realicé mantenimiento preventivo y correctivo de equipos.</li>
+            <li>Participé en tareas de programación en menor escala, adquiriendo bases de desarrollo.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="habilidades" class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Habilidades</p>
+      <h2>Stack técnico</h2>
+    </div>
+    <div class="skill-cols reveal">
+      <div class="skill-col">
+        <h4>Frontend</h4>
+        <ul><li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>React</li><li>Tailwind</li><li>Bootstrap</li></ul>
+      </div>
+      <div class="skill-col">
+        <h4>Backend</h4>
+        <ul><li>Node.js</li><li>Express</li></ul>
+      </div>
+      <div class="skill-col">
+        <h4>Datos</h4>
+        <ul><li>SQL Server (básico)</li><li>MongoDB (aprendiendo)</li><li>Supabase</li></ul>
+      </div>
+      <div class="skill-col">
+        <h4>Herramientas</h4>
+        <ul><li>Git &amp; GitHub</li><li>VS Code</li><li>Postman</li><li>Figma</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap tight">
+    <div class="section-head reveal">
+      <p class="eyebrow">Educación</p>
+      <h2>Formación</h2>
+    </div>
+    <div class="reveal">
+      <div class="edu-item">
+        <div class="row">
+          <h4>Ingeniería de Software</h4>
+          <span class="date">01/2025 — Presente</span>
+        </div>
+        <p class="org">Politécnico Grancolombiano · Medellín, Colombia</p>
+      </div>
+      <div class="edu-item">
+        <div class="row">
+          <h4>Tecnólogo en Mantenimiento de Equipos de Cómputo</h4>
+          <span class="date">07/2018 — 08/2020</span>
+        </div>
+        <p class="org">Servicio Nacional de Aprendizaje (SENA) · Medellín, Colombia</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="wrap">
+    <div class="contact-box reveal">
+      <p class="eyebrow" style="justify-content:center;">Contacto</p>
+      <h2>Hablemos</h2>
+      <p class="lede" style="margin:0 auto;">Disponible para roles de Frontend junior, remoto o en Medellín.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:Michaelsteven3211@gmail.com">Michaelsteven3211@gmail.com</a>
+        <a class="btn btn-ghost" href="tel:+573196412175">(+57) 319 641 2175</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <a href="#top" class="logo"><span class="mark">MC</span>Bekuro</a>
+  <p>Michael Steven Castillo Saldarriaga — Medellín, Colombia</p>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
