@@ -1,58 +1,165 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio - Michael Castillo</title>
+    <link rel="stylesheet" href="style/style.css" />
   </head>
   <body>
     <header>
       <nav class="navbar">
         <div class="logo">Michael</div>
         <ul class="navbar-links">
-          <li><a href="">Proyectos</a></li>
-          <li><a href="">Sobre mi</a></li>
-          <li><a href="">Contactame</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#sobre-mi">Sobre mi</a></li>
+          <li><a href="#contacto">Contactame</a></li>
         </ul>
       </nav>
     </header>
 
     <main>
-      <section class="presentacion">
+      <section class="presentacion" id="presentacion">
         <div class="informacion">
-          <h2>Michael Castillo</h2>
+          <h1>Michael Castillo</h1>
           <p>
             Publiqué Fluu, mi app de hábitos, en Google Play. Hoy sigo
             fortaleciendo JavaScript y React, y pruebo cada proyecto con
             mentalidad de QA.
           </p>
 
-          <button>Ver Proyectos</button>
-          <button>Contactame</button>
+          <a href="">Ver proyectos</a>
+          <a href="">Descargar hoja de vida</a>
         </div>
         <div class="card-presentacion">
-          <img src="" alt="" class="foto-personal" />
+          <img src="./assets/Foto.jpg" alt="" class="foto-personal" />
           <dl class="informacion">
             <dt>Ubicación</dt>
-            <dd>Lorem ipsum dolor</dd>
+            <dd>Medellin - Colombia</dd>
 
             <dt>Celular</dt>
-            <dd>Lorem, ipsum dolor.</dd>
+            <dd>+57 3196412175</dd>
             <dt>Email</dt>
-            <dd>Lorem, ipsum dolor.</dd>
+            <dd>Michaelsteven3211@gmail.com</dd>
             <dt>Profesion</dt>
-            <dd>Lorem ipsum dolor sit.</dd>
+            <dd>Ingeniero de Software</dd>
           </dl>
         </div>
       </section>
 
-      <section class="proyectos">
-        <h2>proyectos</h2>
+      <section class="proyectos" id="proyectos">
+        <h2>Proyectos</h2>
 
-        <div class="card-proyectos"></div>
+        <div class="filtros" role="group" aria-label="Filtrar proyectos">
+          <button
+            type="button"
+            class="filtro-activo"
+            data-filtro="todos"
+            aria-pressed="true"
+          >
+            Todos
+          </button>
+          <button
+            type="button"
+            class="filtro"
+            data-filtro="web"
+            aria-pressed="false"
+          >
+            Web
+          </button>
+          <button
+            type="button"
+            class="filtro"
+            data-filtro="movil"
+            aria-pressed="false"
+          >
+            Móvil
+          </button>
+          <button
+            type="button"
+            class="filtro"
+            data-filtro="qa"
+            aria-pressed="false"
+          >
+            QA
+          </button>
+        </div>
+
+        <div class="lista-proyectos">
+          <article class="card-proyecto" data-categoria="movil">
+            <img
+              src="img/fluu.png"
+              alt="Pantalla principal de la app Fluu"
+              class="card-proyecto-imagen"
+            />
+            <div class="card-proyecto-contenido">
+              <h3>Fluu</h3>
+              <p>App de hábitos y rutinas disponible en Google Play.</p>
+              <ul class="etiquetas">
+                <li>Móvil</li>
+                <li>React Native</li>
+                <li>Supabase</li>
+              </ul>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.bekuro.flowday"
+                class="card-proyecto-enlace"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Ver proyecto →</a
+              >
+            </div>
+          </article>
+
+          <article class="card-proyecto" data-categoria="web">
+            <img
+              src="img/proyecto-web.png"
+              alt="Vista del proyecto web"
+              class="card-proyecto-imagen"
+            />
+            <div class="card-proyecto-contenido">
+              <h3>Proyecto web</h3>
+              <p>Una línea sobre qué hace y qué resolviste.</p>
+              <ul class="etiquetas">
+                <li>Web</li>
+                <li>Tecnología</li>
+              </ul>
+              <a href="#" class="card-proyecto-enlace">Ver proyecto →</a>
+            </div>
+          </article>
+
+          <article class="card-proyecto" data-categoria="qa">
+            <img
+              src="img/proyecto-qa.png"
+              alt="Resultados de las pruebas del proyecto"
+              class="card-proyecto-imagen"
+            />
+            <div class="card-proyecto-contenido">
+              <h3>Proyecto QA</h3>
+              <p>Una línea sobre qué probaste y qué encontraste.</p>
+              <ul class="etiquetas">
+                <li>QA</li>
+                <li>Herramienta</li>
+              </ul>
+              <a href="#" class="card-proyecto-enlace">Ver proyecto →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="sobre-mi" id="sobre-mi">
+        <h2>Sobre mi</h2>
+        <div class="texto">
+          <p>
+            Soy Michael, de Colombia. Construyo apps móviles y sitios web, y
+            publiqué Fluu en Google Play.
+          </p>
+        </div>
+        <div class="herramientas">
+          <p>acá va la información de las herramientas y lenguajes que sé</p>
+        </div>
       </section>
     </main>
 
-    <footer></footer>
+    <footer id="contacto">información de footer</footer>
   </body>
 </html>
