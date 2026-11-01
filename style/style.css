@@ -35,13 +35,12 @@ header {
 
 nav {
   display: flex;
-  max-width: 1160px;
-  min-height: 72px;
+  min-height: auto;
   margin: 0 auto;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
-  padding: 12px 24px;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 16px;
 }
 
 .logo {
@@ -53,8 +52,10 @@ nav {
 
 .navbar-links {
   display: flex;
+  width: 100%;
   align-items: center;
-  gap: 6px;
+  justify-content: space-between;
+  gap: 2px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -65,11 +66,11 @@ nav {
   justify-content: center;
   align-items: center;
   min-height: 36px;
-  padding: 0 12px;
+  padding: 0 6px;
   border: 1px solid transparent;
   border-radius: 10px;
   color: var(--texto-suave);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   text-decoration: none;
   transition:
     color 0.2s ease,
@@ -87,12 +88,10 @@ nav {
 /* ===== PRESENTACIÓN ===== */
 .presentacion {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
-  align-items: center;
-  gap: 72px;
-  max-width: 1160px;
+  grid-template-columns: 1fr;
+  gap: 44px;
   margin: 0 auto;
-  padding: 96px 24px;
+  padding: 64px 20px;
 }
 
 div.informacion {
@@ -102,7 +101,8 @@ div.informacion {
 }
 
 .presentacion > .informacion {
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
 }
 
 .presentacion h1 {
@@ -145,10 +145,11 @@ div.informacion {
 /* ===== TARJETA ===== */
 .card-presentacion {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
   gap: 20px;
   min-width: 0;
-  padding: 28px;
+  padding: 22px;
   background: var(--superficie);
   border: 1px solid var(--borde);
   border-radius: var(--radio-card);
@@ -167,6 +168,7 @@ div.informacion {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
   gap: 0 20px;
+  width: 100%;
   flex: 1;
   min-width: 0; /* deja que el texto largo se parta en vez de salirse */
   margin: 0;
@@ -174,7 +176,7 @@ div.informacion {
 
 .datos-personales dt,
 .datos-personales dd {
-  padding: 12px 0;
+  padding: 9px 0;
   border-top: 1px solid var(--borde);
 }
 
@@ -193,7 +195,7 @@ div.informacion {
 .sobre-mi {
   max-width: 1160px;
   margin: 0 auto;
-  padding: 72px 24px;
+  padding: 48px 16px;
 }
 
 .proyectos {
@@ -215,6 +217,7 @@ div.informacion {
 }
 
 .filtros button {
+  flex: 1 1 auto;
   padding: 9px 16px;
   border: 1px solid var(--borde);
   border-radius: 999px;
@@ -326,8 +329,8 @@ div.informacion {
 /* ===== SOBRE MÍ ===== */
 .sobre-mi {
   display: grid;
-  grid-template-columns: minmax(180px, 0.7fr) minmax(0, 1fr);
-  gap: 24px 72px;
+  grid-template-columns: 1fr;
+  gap: 24px;
   border-top: 1px solid var(--borde);
 }
 
@@ -342,7 +345,7 @@ div.informacion {
 }
 
 .herramientas {
-  grid-column: 2;
+  grid-column: auto;
   padding: 24px;
   background: var(--superficie);
   border: 1px solid var(--borde);
@@ -374,7 +377,7 @@ div.informacion {
 
 /* ===== FOOTER ===== */
 footer {
-  padding: 40px 24px 24px;
+  padding: 28px 16px;
   border-top: 1px solid var(--borde);
   color: var(--texto-suave);
 }
@@ -383,7 +386,7 @@ footer {
   display: flex;
   max-width: 1160px;
   margin: 0 auto;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 24px;
 }
 
@@ -399,7 +402,7 @@ footer {
 .footer-contacto {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 6px;
 }
 
@@ -422,34 +425,23 @@ footer {
   text-align: center;
 }
 
-@media (max-width: 760px) {
+@media (min-width: 481px) {
   nav {
-    min-height: auto;
-    padding: 14px 16px;
+    align-items: center;
+    flex-direction: row;
+    gap: 24px;
+    padding: 12px 24px;
   }
 
   .navbar-links {
-    gap: 2px;
+    width: auto;
+    justify-content: initial;
+    gap: 6px;
   }
 
   .navbar-links a {
-    padding: 0 8px;
-    font-size: 0.8rem;
-  }
-
-  .presentacion {
-    grid-template-columns: 1fr;
-    gap: 44px;
-    padding: 64px 20px;
-  }
-
-  .presentacion > .informacion {
-    align-items: center;
-    text-align: center;
-  }
-
-  .presentacion p {
-    margin-bottom: 28px;
+    padding: 0 12px;
+    font-size: 0.9rem;
   }
 
   .proyectos,
@@ -457,73 +449,63 @@ footer {
     padding: 56px 20px;
   }
 
-  .sobre-mi {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .herramientas {
-    grid-column: auto;
+  footer {
+    padding: 36px 24px 24px;
   }
 
   .footer-contenido {
-    flex-direction: column;
-  }
-
-  .footer-contacto {
-    align-items: flex-start;
-  }
-}
-
-@media (max-width: 480px) {
-  nav {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .navbar-links {
-    width: 100%;
+    flex-direction: row;
     justify-content: space-between;
   }
 
-  .navbar-links a {
-    padding: 0 6px;
+  .footer-contacto {
+    align-items: flex-end;
+  }
+
+  .filtros button {
+    flex: 0 1 auto;
+  }
+}
+
+@media (min-width: 761px) {
+  nav {
+    max-width: 1160px;
+  }
+
+  .presentacion {
+    grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+    align-items: center;
+    gap: 72px;
+    padding: 96px 24px;
+  }
+
+  .presentacion > .informacion {
+    align-items: flex-start;
+    text-align: left;
   }
 
   .card-presentacion {
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 22px;
-  }
-
-  .datos-personales {
-    width: 100%;
+    align-items: center;
+    flex-direction: row;
+    padding: 28px;
   }
 
   .datos-personales dt,
   .datos-personales dd {
-    padding: 9px 0;
+    padding: 12px 0;
   }
 
   .proyectos,
   .sobre-mi {
-    padding: 48px 16px;
+    padding: 72px 24px;
   }
 
-  .filtros {
-    margin: 22px 0 24px;
+  .sobre-mi {
+    grid-template-columns: minmax(180px, 0.7fr) minmax(0, 1fr);
+    gap: 24px 72px;
   }
 
-  .filtros button {
-    flex: 1 1 auto;
-  }
-
-  .card-proyecto-contenido {
-    padding: 20px;
-  }
-
-  footer {
-    padding: 28px 16px;
+  .herramientas {
+    grid-column: 2;
   }
 }
